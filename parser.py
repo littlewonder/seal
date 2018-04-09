@@ -219,9 +219,27 @@ def parse(toks):
 
 def main():
     src = sys.stdin.read()
-    toks = lex(src)                      # source -> tokens
-    ast = parse(toks)                    # tokens -> AST
-    print(ast)
+    toks = lex(src)
+    printToken(toks)                   # source -> tokens
+    ast = parse(toks)
+    printAST(ast)
+        
+def printAST(ast):
+    print('\n')
+    print('AST')                    # tokens -> AST
+    for idx in ast:
+        print(idx)
+        print('-------------------')
+        for i in ast[idx]:
+            print(i)
+
+def printToken(toks):
+    print('Tokens')                    # tokens -> AST
+    print('-------------------')
+    for elm in toks:
+        print(elm)
+    
+
 
 if __name__ == "__main__":
     main()
