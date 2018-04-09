@@ -141,7 +141,8 @@ def lex(s):
 def main():
     src = sys.stdin.read()
     toks = lex(src)    
-    print(toks)  
+    for line in toks:
+        print(line)  
 
 if __name__ == '__main__':
     main()
