@@ -22,6 +22,7 @@ TOK_SEMI   = 17
 TOK_READ   = 18
 
 
+
 def error(msg):
     print("Error: " + msg)
     sys.exit(1)
