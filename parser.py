@@ -39,61 +39,6 @@ def astnode(nodetype, **args):
     return dict(nodetype=nodetype, **args)
 
 def parse(toks):
-    """
-    Input : a list of tokens
-    Output: a list of statement nodes
-    parse(toks) is a predictive, recursive-descent parser that will
-    return a list of AST nodes (declarations and statements) from the
-    token stream computer by lex() above.  We parse the tokens
-    according to the following grammar.  Every non-terminal (left-hand
-    side of a ::=) has its own local function definition.
-        program  ::=  decls stmts
-        decls    ::=  decl decls
-                   |  ε
-        decl     ::=  'var' ident ':' type ';'
-        stmts    ::=  stmt stmts
-                   |  ε
-        stmt     ::=  ident '=' expr ';'
-                   |  'read' ident ';'
-                   |  'print' expr ';'
-                   |  'while' expr 'do' stmts 'done'
-        expr     ::=  term { '+' expr }
-                   |  term { '-' expr }
-                   |  term
-        term     ::=  factor { '*' term }
-                   |  factor { '-' term }
-                   |  factor
-        factor   ::=  '(' expr ')'
-                   |  ident
-                   |  int
-                   |  float
-    The AST nodes are represented with dicts as follows:
-    - Declarations
-        - var id: type         : { "nodetype": AST_DECL, "id": id, "type": type }
-    - Statements
-        - id = expr            : { "nodetype": AST_ASSIGN, "lhs": id, "rhs": expr }
-        - print expr           : { "nodetype": AST_PRINT, "expr": expr }
-        - read id              : { "nodetype": AST_READ, "id": id }
-        - while e do stmts done: { "nodetype": AST_WHILE, "expr": e, "body": stmts }
-    - Expressions
-        - int                  : { "nodetype": AST_INT, "value": int }
-        - float                : { "nodetype": AST_FLOAT, "value": float }
-        - id                   : { "nodetype": AST_ID, "name": id }
-        - e1 + e2              : { "nodetype": AST_BINOP, op: "+", "lhs": e1, "rhs": e2 }
-    For example, here is a simple statement and its AST representation:
-        x = 3 + y
-        {
-          "nodetype": AST_ASSIGN,
-          "lhs": "x",
-          "rhs": {
-            "nodetype": AST_BINOP,
-            "op": "+",
-            "lhs": { "nodetype": AST_INT, "value": 3 },
-            "rhs": { "nodetype": AST_ID, "name": "y" }
-          }
-        }
-    """
-
     def consume(tok_type):
         if tok_type == toks[0]["toktype"]:
             t = toks.pop(0)
