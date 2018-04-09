@@ -220,7 +220,7 @@ def parse(toks):
 def main():
     src = sys.stdin.read()
     toks = lex(src)
-    printToken(toks)                   # source -> tokens
+    #printToken(toks)                   # source -> tokens
     ast = parse(toks)
     printAST(ast)
         
