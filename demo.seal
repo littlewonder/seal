@@ -1,17 +1,19 @@
-var x: float;
-var guess: float;
-var quot: float;
-var iter: int;
+var p: float;
+var count: float;
+var loopvar: float;
 
-read x;
-guess = 1.0;
-iter = 10;
+count = 1.0;
 
-while iter do
-  quot = x / guess;
-  guess = 0.5 * (guess + quot);
-  iter = iter - 1;
+print count/2;
+print count * count;
+
+read p;
+loopvar = 10.2;
+
+while loopvar do
+  count = 0.5 * (count + quot);
+  loopvar = loopvar - 1.2;
 done
 
-print guess;
-print guess * guess;
+print count/2;
+print count * count;
