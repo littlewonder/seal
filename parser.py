@@ -39,6 +39,7 @@ def astnode(nodetype, **args):
     return dict(nodetype=nodetype, **args)
 
 def parse(toks):
+    
     def consume(tok_type):
         if tok_type == toks[0]["toktype"]:
             t = toks.pop(0)
@@ -51,14 +52,6 @@ def parse(toks):
             return toks[0]["toktype"]
         else:
             return None
-
-    def program():
-        ds = decls()
-        sts = stmts()
-        return {
-            "decls": ds,
-            "stmts": sts,
-        }
 
     def decls():
         decls = []
@@ -160,7 +153,12 @@ def parse(toks):
         else:
             error("illegal token %d" % next_tok)
 
-    return program()
+    ds = decls()
+    sts = stmts()
+    return {
+        "decls": ds,
+        "stmts": sts,
+    }
 
 def main():
     src = sys.stdin.read()
