@@ -80,3 +80,13 @@
     float   ::= digit+ '.' digit*
     keyword ::= "var" | "print" | "read" | "while" | "do" | "done" | "int" | "float"
     ident   ::= alpha alnum*
+    
+# Symbol Table
+
+    Input : the AST of a mini program
+    Output: a dictionary mapping variable names to types
+
+    This procedure iterates over the declarations and adds them to a
+    symbol table (here, a dictionary that maps variable names to their
+    declared type).  If a variable is declared more than once, we
+    report an error.
