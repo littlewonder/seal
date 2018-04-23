@@ -7,8 +7,6 @@ a = 0;
 b = 1;
 n = 10;
 
-var a: float;
-
 while n do
   t = a;
   a = b;
