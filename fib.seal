@@ -1,3 +1,5 @@
+# Compute the n'th fibonacci number iteratively (O(n)).
+
 var a: int;
 var b: int;
 var n: int;
@@ -6,8 +8,6 @@ var t: int;
 a = 0;
 b = 1;
 n = 10;
-
-var a: float;
 
 while n do
   t = a;

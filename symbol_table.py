@@ -35,10 +35,15 @@ AST_BINOP  = 6
 AST_WHILE  = 7
 AST_READ   = 8
 
+def error(msg):
+    print("Error: " + msg)
+    sys.exit(1)
+
 def build_symtab(ast):
 
     symtab = {}
     for decl in ast["decls"]:
+        print decl["id"]
         if decl["id"] in symtab:
             error("%s is already declared" % decl["id"])
         else:
