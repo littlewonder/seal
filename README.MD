@@ -90,3 +90,19 @@
     symbol table (here, a dictionary that maps variable names to their
     declared type).  If a variable is declared more than once, we
     report an error.
+
+# Type Check
+
+    Input : the AST of a mini program and its associated symbol table
+    Output: an AST of the mini program, but with extra type
+    information added inside expression nodes
+
+    The typing rules of our small language are pretty simple:
+
+    - We have two types, int and float
+    - An int literal has type int
+    - A float literal has type float
+    - There is no automatic conversion from int to float (in fact, the
+      language does not support conversions)
+    - The two operands of an arithmetic operations must be of the same type
+    - An expression can be assigned to a variable only if their types are equal

@@ -43,21 +43,6 @@ def astnode(nodetype, **args):
     return dict(nodetype=nodetype, **args)
 
 def typecheck(ast, symtab):
-    """
-    Input : the AST of a mini program and its associated symbol table
-    Output: an AST of the mini program, but with extra type
-    information added inside expression nodes
-
-    The typing rules of our small language are pretty simple:
-
-    - We have two types, int and float
-    - An int literal has type int
-    - A float literal has type float
-    - There is no automatic conversion from int to float (in fact, the
-      language does not support conversions)
-    - The two operands of an arithmetic operations must be of the same type
-    - An expression can be assigned to a variable only if their types are equal
-    """
     def check_stmt(stmt):
         if stmt["nodetype"] == AST_PRINT:
             typed_expr = check_expr(stmt["expr"])
