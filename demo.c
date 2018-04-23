@@ -1,7 +1,3 @@
-a
-b
-n
-t
 #include <stdio.h>
 int main(void) {
 int a;

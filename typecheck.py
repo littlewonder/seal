@@ -91,7 +91,12 @@ def main():
     ast = parse(toks)
     sym = build_symtab(ast)
     type_check = typecheck(ast,sym)
-    # print type_check
+    print("<------ Statements ------->")
+    print(type_check['stmts'])
+
+    print('\n')
+    print("<------ Declarations ---->")
+    print(type_check['decls'])
 
 if __name__ == "__main__":
     main()
