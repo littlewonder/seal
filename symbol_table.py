@@ -43,7 +43,7 @@ def build_symtab(ast):
 
     symtab = {}
     for decl in ast["decls"]:
-        print decl["id"]
+        # print decl["id"]
         if decl["id"] in symtab:
             error("%s is already declared" % decl["id"])
         else:
@@ -57,7 +57,12 @@ def main():
     #printToken(toks)                   # source -> tokens
     ast = parse(toks)
     sym = build_symtab(ast)
-    print sym
+    print("\n <------Symbol Table -------->\n")
+    print("Scope : Global\n")
+    print("Symbol\tType")
+    for keys,values in sym.items():
+        print("{}\t{}".format(keys,values))
+    # print sym
 
 if __name__ == "__main__":
     main()
